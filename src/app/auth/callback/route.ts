@@ -20,7 +20,8 @@ export async function GET(request: NextRequest) {
   const next = sanitizeRedirectPath(requestUrl.searchParams.get("next"));
 
   if (code) {
-    let response = NextResponse.redirect(new URL(next, request.url));
+    // Placeholder redirect — will be overridden below after session check
+    let response = NextResponse.redirect(new URL(next || "/dashboard", request.url));
 
     const supabase = createServerClient(
       process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -43,6 +44,24 @@ export async function GET(request: NextRequest) {
     const { error } = await supabase.auth.exchangeCodeForSession(code);
 
     if (!error) {
+      // Detect new vs existing user: check if profile already exists
+      const { data: { user } } = await supabase.auth.getUser();
+      if (user) {
+        const { data: profile } = await supabase
+          .from("profiles")
+          .select("user_id")
+          .eq("user_id", user.id)
+          .maybeSingle();
+
+        // New user (no profile) → onboarding; existing user → intended destination
+        const destination = !profile ? "/onboarding" : (next || "/dashboard");
+        response = NextResponse.redirect(new URL(destination, request.url));
+        // Re-apply cookies to the new response object
+        request.cookies.getAll().forEach(({ name }) => {
+          const val = request.cookies.get(name)?.value;
+          if (val) response.cookies.set(name, val);
+        });
+      }
       return response;
     }
   }

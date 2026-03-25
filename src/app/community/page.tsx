@@ -112,6 +112,7 @@ export default function CommunityPage() {
 
   const sendMessage = async () => {
     if (!input.trim() || !user || isSending) return;
+    if (input.trim().length > 500) return;
     setIsSending(true);
     try {
       await postCommunityChatAction(input);
@@ -239,10 +240,11 @@ export default function CommunityPage() {
 
         <div className="p-4 bg-black/50 backdrop-blur-md border-t border-white/5">
           <div className="relative flex items-center bg-card-dark rounded-xl border border-white/10 p-1">
-            <input 
-              className="flex-1 bg-transparent border-none focus:ring-0 text-xs py-3 px-4 text-white placeholder:text-slate-600" 
-              placeholder="Motivate the collective..." 
+            <input
+              className="flex-1 bg-transparent border-none focus:ring-0 text-xs py-3 px-4 text-white placeholder:text-slate-600"
+              placeholder="Motivate the collective..."
               type="text"
+              maxLength={500}
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && sendMessage()}

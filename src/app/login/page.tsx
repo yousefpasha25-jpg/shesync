@@ -109,6 +109,11 @@ export default function LoginPage() {
             </p>
           </header>
 
+          {/* TODO: Add Cloudflare Turnstile CAPTCHA here to prevent brute-force.
+              Integration: https://developers.cloudflare.com/turnstile/get-started/
+              1. npm install @marsidev/react-turnstile
+              2. Wrap form with <Turnstile siteKey={process.env.NEXT_PUBLIC_CF_TURNSTILE_SITE_KEY} onSuccess={setToken} />
+              3. Verify token server-side in handleAuth before calling supabase.auth */}
           <form onSubmit={handleAuth} className="space-y-5">
             <div className="space-y-2">
               <label htmlFor="email" className="text-[10px] font-bold uppercase tracking-widest text-slate-500 ml-1">Email Address</label>

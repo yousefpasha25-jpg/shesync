@@ -30,15 +30,10 @@ export default function AIChat() {
     setInput("");
     setIsLoading(true);
 
-    const CHAT_URL = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/functions/v1/chat`;
-
     try {
-      const resp = await fetch(CHAT_URL, {
+      const resp = await fetch("/api/coach", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY}`,
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ messages: newMessages }),
       });
 

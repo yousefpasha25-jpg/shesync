@@ -186,7 +186,8 @@ export async function POST(req: Request) {
     // ══════════════════════════════════════════
     // MOCK DEV MODE — bypass Gemini entirely
     // ══════════════════════════════════════════
-    const USE_MOCK = process.env.NODE_ENV === "development" && process.env.NEXT_PUBLIC_USE_MOCK_AI === "true";
+    // Mock mode is strictly dev-only — never active in production
+    const USE_MOCK = process.env.NODE_ENV !== "production" && process.env.NEXT_PUBLIC_USE_MOCK_AI === "true";
     if (USE_MOCK) {
       console.warn("🧪 MOCK AI MODE — returning hardcoded plan (2s simulated latency)");
       await sleep(2000);

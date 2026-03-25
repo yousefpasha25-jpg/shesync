@@ -1,24 +1,34 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { NextResponse } from 'next/server';
+import { NextResponse, NextRequest } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 import { onboardingSchema } from '@/features/onboarding/schema';
+import { onboardingRateLimit } from '@/lib/rate-limit';
 
 /**
  * Handle Onboarding Submission (POST)
  * Receives the Zusthand store data, validates it via Zod, and securely
  * inserts into Supabase tables `profiles` and `health_metrics`.
  */
-export async function POST(request: Request) {
+export async function POST(request: NextRequest) {
   try {
     const supabase = await createClient();
-    
+
     // 1. Authenticate user via Supabase session
     const { data: { user }, error: authError } = await supabase.auth.getUser();
     
     if (authError || !user) {
       return NextResponse.json(
-        { error: 'Unauthorized: No active session found.' }, 
+        { error: 'Unauthorized: No active session found.' },
         { status: 401 }
+      );
+    }
+
+    // 1b. Rate limiting — 10 submissions per user per hour
+    const { success: rateLimitOk } = await onboardingRateLimit.limit(user.id);
+    if (!rateLimitOk) {
+      return NextResponse.json(
+        { error: 'Too many requests. Please wait before submitting again.' },
+        { status: 429 }
       );
     }
 
