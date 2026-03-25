@@ -1,0 +1,2 @@
+// Workouts feature - scaffold
+export {};
