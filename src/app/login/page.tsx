@@ -19,12 +19,24 @@ export default function LoginPage() {
     e.preventDefault();
     setLoading(true);
 
+    // Validate env vars are loaded before attempting network call
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+    const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+    if (!supabaseUrl || !supabaseKey) {
+      console.error("[Auth] Missing env vars:", { supabaseUrl: !!supabaseUrl, supabaseKey: !!supabaseKey });
+      toast({
+        title: "Configuration Error",
+        description: "App is not properly configured. Please contact support.",
+        variant: "destructive",
+      });
+      setLoading(false);
+      return;
+    }
+    console.info("[Auth] Supabase env vars loaded. URL:", supabaseUrl.slice(0, 30) + "...");
+
     try {
       if (isLogin) {
-        const { error } = await supabase.auth.signInWithPassword({
-          email,
-          password,
-        });
+        const { error } = await supabase.auth.signInWithPassword({ email, password });
         if (error) throw error;
         toast({
           title: "Welcome back",
@@ -46,12 +58,24 @@ export default function LoginPage() {
         });
         router.push("/onboarding");
       }
-    } catch (error: any) {
-      toast({
-        title: "Authentication Error",
-        description: error.message || "Something went wrong. Please try again.",
-        variant: "destructive",
-      });
+    } catch (error: unknown) {
+      // TypeError: "Failed to fetch" = network/CORS issue, not an auth error
+      if (error instanceof TypeError && error.message.includes("fetch")) {
+        console.error("[Auth] Network error — cannot reach Supabase:", error);
+        toast({
+          title: "Network Error",
+          description: "Cannot connect to the server. Check your internet connection or try again in a moment.",
+          variant: "destructive",
+        });
+      } else {
+        const msg = error instanceof Error ? error.message : "Something went wrong. Please try again.";
+        console.error("[Auth] Auth error:", msg);
+        toast({
+          title: "Authentication Error",
+          description: msg,
+          variant: "destructive",
+        });
+      }
     } finally {
       setLoading(false);
     }
