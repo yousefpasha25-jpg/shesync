@@ -269,7 +269,7 @@ export default function Dashboard() {
         <div className="mb-6 flex items-center justify-between">
           <div>
             <h1 className="text-2xl font-bold mb-1">
-              Good morning, {profile?.full_name?.split(' ')[0] || profile?.name?.split(' ')[0] || "Champ"}!
+              Good {new Date().getHours() < 12 ? "morning" : new Date().getHours() < 17 ? "afternoon" : "evening"}, {profile?.full_name?.split(' ')[0] || "Champ"}!
             </h1>
             <p className="text-sm text-muted-foreground">{goalMessage}</p>
           </div>

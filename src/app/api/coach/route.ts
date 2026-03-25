@@ -50,7 +50,7 @@ export async function POST(req: NextRequest) {
 
     // ── 3. Fetch User Context from Supabase (Step 1) ──
     // Hardened with maybeSingle() to handle missing rows without throwing
-    const { data: profile } = await supabase.from('profiles').select('id, full_name, age, fitness_level, fitness_goals, equipment_access').eq('id', user.id).maybeSingle();
+    const { data: profile } = await supabase.from('profiles').select('user_id, full_name, age, fitness_level, fitness_goals, equipment_access').eq('user_id', user.id).maybeSingle();
     const { data: health } = await supabase.from('health_metrics').select('weight, height').eq('user_id', user.id).maybeSingle();
     const { data: userGoals } = await supabase.from('user_goals').select('goal').eq('user_id', user.id);
 

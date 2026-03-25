@@ -7,7 +7,7 @@ export async function deleteAccountAction() {
   if (authError || !user) throw new Error("Unauthorized");
 
   // Delete the profile, which cascades to user_plans, meals, etc.
-  const { error } = await supabase.from('profiles').delete().eq('id', user.id);
+  const { error } = await supabase.from('profiles').delete().eq('user_id', user.id);
   if (error) throw error;
   
   // Sign out will happen on the client

@@ -43,8 +43,9 @@ export default function AICoach() {
       setCurrentUser(user);
 
       // Fetch all user data
-      const [profile, goals, fitnessPrefs, nutritionPrefs, equipmentAccess] = await Promise.all([
-        supabase.from("profiles").select("full_name, age, weight_kg, height_cm").eq("user_id", user.id).maybeSingle(),
+      const [profile, healthMetrics, goals, fitnessPrefs, nutritionPrefs, equipmentAccess] = await Promise.all([
+        supabase.from("profiles").select("full_name, age").eq("user_id", user.id).maybeSingle(),
+        supabase.from("health_metrics").select("weight, height").eq("user_id", user.id).maybeSingle(),
         supabase.from("user_goals").select("goal").eq("user_id", user.id),
         supabase.from("fitness_prefs").select("level, frequency_days_per_week").eq("user_id", user.id).maybeSingle(),
         supabase.from("nutrition_prefs").select("meal_frequency, diet_rules").eq("user_id", user.id).maybeSingle(),
@@ -52,7 +53,7 @@ export default function AICoach() {
       ]);
 
       setUserData({
-        profile: profile.data,
+        profile: { ...profile.data, weight_kg: healthMetrics.data?.weight, height_cm: healthMetrics.data?.height },
         goals: goals.data?.map((g: any) => g.goal) || [],
         fitnessPrefs: fitnessPrefs.data,
         nutritionPrefs: nutritionPrefs.data,

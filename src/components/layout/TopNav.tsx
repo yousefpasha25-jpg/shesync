@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { useTheme } from "next-themes";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { supabase } from "@/lib/supabase/client";
@@ -14,6 +14,7 @@ export function TopNav() {
   const { theme, setTheme } = useTheme();
   const { toggleLanguage } = useLanguage();
   const router = useRouter();
+  const pathname = usePathname();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -24,6 +25,10 @@ export function TopNav() {
     await supabase.auth.signOut();
     router.push("/");
   };
+
+  // Don't show on landing or auth pages
+  const hiddenRoutes = ["/", "/login", "/signup"];
+  if (hiddenRoutes.includes(pathname)) return null;
 
   return (
     <header className="border-b border-border bg-card/80 backdrop-blur-md sticky top-0 z-50">

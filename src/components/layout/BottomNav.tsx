@@ -17,8 +17,9 @@ const navItems = [
 export function BottomNav() {
   const pathname = usePathname();
 
-  // Don't show on landing or onboarding
-  if (pathname === "/" || pathname === "/onboarding") return null;
+  // Don't show on landing, auth, or public marketing pages
+  const hiddenRoutes = ["/", "/login", "/signup", "/onboarding", "/about", "/pricing"];
+  if (hiddenRoutes.includes(pathname)) return null;
 
   return (
     <nav className="fixed bottom-0 inset-x-0 z-50 bg-card/80 backdrop-blur-md border-t border-border px-6 pb-8 pt-4">

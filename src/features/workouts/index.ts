@@ -1,2 +1,0 @@
-// Workouts feature - scaffold
-export {};
