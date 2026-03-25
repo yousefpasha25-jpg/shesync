@@ -268,7 +268,7 @@ export function Step11({ onComplete, onBack, allData }: any) {
   return (
     <div className="fixed inset-0">
       <div className="absolute inset-0">
-        <Image src={STEP11_IMAGE} alt="Awdan Team" fill priority className="object-cover" sizes="100vw" />
+        <Image src={STEP11_IMAGE} alt="SheSync" fill priority className="object-cover" sizes="100vw" />
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70"></div>
       </div>
       <div className="relative h-full overflow-y-auto pt-40 px-6">

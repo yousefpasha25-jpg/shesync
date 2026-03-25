@@ -10,7 +10,7 @@ const team = [
     icon: User2,
     members: [
       {
-        name: "Sara El Awdan",
+        name: "Sara Hassan",
         role: "International fitness instructor and triathlete",
         avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Sara",
       },

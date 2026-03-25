@@ -6,7 +6,7 @@ import NextImage from "next/image";
 
 const mentors = [
   {
-    name: "Sara El Awdan",
+    name: "Sara Hassan",
     role: "Founder & Elite Coach",
     bio: "International fitness instructor and triathlete with 10+ years of experience.",
     avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Sara",
