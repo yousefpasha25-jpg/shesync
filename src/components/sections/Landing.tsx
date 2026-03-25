@@ -96,8 +96,8 @@ const Landing = () => {
             </div>
 
             <div className="space-y-2 text-center md:text-right">
-              <p className="text-white font-bold tracking-tighter italic">SheSync by Awdan Vibes</p>
-              <p className="text-[10px] uppercase tracking-widest opacity-50">© 2026 EL AWDAN LABS. ALL RIGHTS RESERVED.</p>
+              <p className="text-white font-bold tracking-tighter italic">SheSync</p>
+              <p className="text-[10px] uppercase tracking-widest opacity-50">© 2026 SHESYNC. ALL RIGHTS RESERVED.</p>
             </div>
           </div>
         </div>

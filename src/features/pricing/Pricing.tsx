@@ -17,7 +17,7 @@ const Pricing = () => {
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {[
             {
-              name: "Awdan Starter",
+              name: "SheSync Starter",
               price: "FREE",
               period: "",
               features: [
@@ -31,7 +31,7 @@ const Pricing = () => {
               popular: false
             },
             {
-              name: "Awdan Pro",
+              name: "SheSync Pro",
               subtitle: "BASIC",
               price: "499",
               period: "month",
@@ -48,14 +48,14 @@ const Pricing = () => {
               popular: true
             },
             {
-              name: "✨ Awdan Elite",
+              name: "✨ SheSync Elite",
               subtitle: "PREMIUM",
               price: "1,199",
               period: "month",
               currency: "EGP",
               yearlyPrice: "11,000",
               features: [
-                "Everything in Awdan Pro, plus:",
+                "Everything in SheSync Pro, plus:",
                 "Hybrid Access: 4 studio sessions/month",
                 "Access to select Hybrid Days",
                 "1:1 coach check-in once per month",
@@ -122,7 +122,7 @@ const Pricing = () => {
         </div>
 
         <p className="text-center text-muted-foreground mt-8 text-sm">
-          All plans include a 7-day free trial • Powered by Awdan Vibes
+          All plans include a 7-day free trial • Powered by SheSync
         </p>
       </div>
     </div>

@@ -2,135 +2,113 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Progress } from "@/components/ui/progress";
-import { Sparkles } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
 import { supabase } from "@/lib/supabase/client";
 import { useToast } from "@/hooks/use-toast";
-import { BrandLogo } from "@/components/ui/BrandLogo";
-
-// Import steps from sub-files
-import { Step1, Step2, Step3, Step4, Step5 } from "@/features/onboarding/Steps1-5";
-import { Step6, Step7, Step8, Step9, Step10, Step11 } from "@/features/onboarding/Steps6-11";
 import { OnboardingData } from "./types";
 import { saveOnboardingDataAction } from "@/features/onboarding/actions";
+import { NewStep1, NewStep2, NewStep3, NewStep4, NewStep5 } from "./Steps1-5";
 
-const TOTAL_STEPS = 11;
+const TOTAL_STEPS = 5;
+
+const slideVariants = {
+  enter: (dir: number) => ({ x: dir > 0 ? "100%" : "-100%", opacity: 0 }),
+  center: { x: 0, opacity: 1 },
+  exit: (dir: number) => ({ x: dir > 0 ? "-100%" : "100%", opacity: 0 }),
+};
 
 export default function Onboarding() {
   const [step, setStep] = useState(1);
-  const [onboardingData, setOnboardingData] = useState<Partial<OnboardingData>>({});
-  const [isInitialized, setIsInitialized] = useState(false);
+  const [dir, setDir] = useState(1);
+  const [data, setData] = useState<Partial<OnboardingData>>({});
+  const [ready, setReady] = useState(false);
   const router = useRouter();
   const { toast } = useToast();
 
-  const progress = (step / TOTAL_STEPS) * 100;
-
-  // Create anonymous session on mount if needed
   useEffect(() => {
-    const initSession = async () => {
-      const { data: { user } } = await supabase.auth.getUser();
-      if (!user) {
-        // In a real app, you might want to sign in anonymously or redirect to login
-        // await supabase.auth.signInAnonymously();
-      }
-      setIsInitialized(true);
-    };
-    initSession();
+    supabase.auth.getUser().then(() => setReady(true));
   }, []);
 
-  if (!isInitialized) {
+  if (!ready) {
     return (
-      <div className="min-h-screen bg-background flex items-center justify-center">
-      <div className="text-center">
-        <BrandLogo size="lg" withText={false} className="animate-pulse mb-4" />
-        <p className="text-muted-foreground">Preparing your Awdan Experience...</p>
-      </div>
+      <div className="fixed inset-0 bg-[#050505] flex items-center justify-center">
+        <div className="size-8 border-2 border-primary/30 border-t-primary rounded-full animate-spin" />
       </div>
     );
   }
 
-  const handleNext = (data: any) => {
-    setOnboardingData({ ...onboardingData, ...data });
-    if (step < TOTAL_STEPS) {
-      setStep(step + 1);
-    }
+  const next = (newData: any) => {
+    setData((prev) => ({ ...prev, ...newData }));
+    setDir(1);
+    setStep((s) => s + 1);
   };
 
-  const handleBack = () => {
-    if (step > 1) {
-      setStep(step - 1);
-    }
+  const back = () => {
+    setDir(-1);
+    setStep((s) => s - 1);
   };
 
-  const handleSkip = () => {
-    if (step < TOTAL_STEPS) {
-      setStep(step + 1);
-    }
-  };
-
-  const handleComplete = async (finalData?: any) => {
+  const complete = async (finalData?: any) => {
     try {
-      const dataToSave = finalData || onboardingData;
-      const { data: { user }, error: authError } = await supabase.auth.getUser();
-
-      if (authError || !user) {
-        console.error("Auth Error:", authError);
+      const merged = { ...data, ...(finalData || {}) };
+      const {
+        data: { user },
+        error,
+      } = await supabase.auth.getUser();
+      if (error || !user) {
         toast({
           variant: "destructive",
-          title: "Session error",
-          description: "Please log in to save your progress.",
+          title: "Session expired",
+          description: "Please log in again.",
         });
         router.push("/login");
         return;
       }
-
-      await saveOnboardingDataAction(dataToSave);
-
-      // 6. Redirect immediately to Dashboard.
+      await saveOnboardingDataAction(merged);
       router.push("/dashboard");
-    } catch (error: any) {
-      console.warn("Onboarding error object:", JSON.stringify(error, null, 2));
+    } catch (err: any) {
       toast({
         variant: "destructive",
-        title: "Database Error",
-        description: error.message || error.details || "Failed to save profile. Please check schema.",
+        title: "Error saving profile",
+        description: err.message || "Please try again.",
       });
     }
   };
 
+  const isFullScreen = step === 1 || step === 5;
+  const props = {
+    data,
+    onNext: next,
+    onBack: back,
+    onComplete: complete,
+    step,
+    totalSteps: TOTAL_STEPS,
+  };
+
   return (
-    <div className="min-h-screen bg-background flex items-center justify-center p-4">
-      {[1, 7, 11].includes(step) ? (
-        <div className="w-full h-screen fixed inset-0">
-          {step === 1 && <Step1 onNext={handleNext} onBack={handleBack} initialData={onboardingData} progress={progress} currentStep={step} totalSteps={TOTAL_STEPS} />}
-          {step === 7 && <Step7 onNext={handleNext} onBack={handleBack} initialData={onboardingData} progress={progress} currentStep={step} totalSteps={TOTAL_STEPS} />}
-          {step === 11 && <Step11 onComplete={handleComplete} onBack={handleBack} allData={onboardingData} progress={progress} currentStep={step} totalSteps={TOTAL_STEPS} />}
-        </div>
-      ) : (
-        <Card className="w-full max-w-2xl shadow-lg animate-in fade-in zoom-in duration-300">
-          <CardHeader className="relative overflow-hidden">
-            <div className="flex items-center gap-2 mb-2 relative z-10">
-              <BrandLogo size="sm" />
-            </div>
-            <CardDescription className="text-sm text-muted-foreground relative z-10">
-              Step {step} of {TOTAL_STEPS} • {Math.round(progress)}%
-            </CardDescription>
-            <Progress value={progress} className="mt-4 relative z-10" />
-          </CardHeader>
-          <CardContent>
-            {step === 2 && <Step2 onNext={handleNext} onBack={handleBack} onSkip={handleSkip} initialData={onboardingData} />}
-            {step === 3 && <Step3 onNext={handleNext} onBack={handleBack} initialData={onboardingData} />}
-            {step === 4 && <Step4 onNext={handleNext} onBack={handleBack} initialData={onboardingData} />}
-            {step === 5 && <Step5 onNext={handleNext} onBack={handleBack} onSkip={handleSkip} initialData={onboardingData} />}
-            {step === 6 && <Step6 onNext={handleNext} onBack={handleBack} initialData={onboardingData} />}
-            {step === 8 && <Step8 onNext={handleNext} onBack={handleBack} initialData={onboardingData} />}
-            {step === 9 && <Step9 onNext={handleNext} onBack={handleBack} initialData={onboardingData} />}
-            {step === 10 && <Step10 onNext={handleNext} onBack={handleBack} onSkip={handleSkip} initialData={onboardingData} />}
-          </CardContent>
-        </Card>
-      )}
+    <div
+      className={
+        isFullScreen ? "fixed inset-0 overflow-hidden" : "min-h-screen bg-[#050505] overflow-hidden"
+      }
+    >
+      <AnimatePresence mode="wait" custom={dir}>
+        <motion.div
+          key={step}
+          custom={dir}
+          variants={slideVariants}
+          initial="enter"
+          animate="center"
+          exit="exit"
+          transition={{ type: "tween", ease: "easeInOut", duration: 0.3 }}
+          className="w-full h-full"
+        >
+          {step === 1 && <NewStep1 {...props} />}
+          {step === 2 && <NewStep2 {...props} />}
+          {step === 3 && <NewStep3 {...props} />}
+          {step === 4 && <NewStep4 {...props} />}
+          {step === 5 && <NewStep5 {...props} />}
+        </motion.div>
+      </AnimatePresence>
     </div>
   );
 }

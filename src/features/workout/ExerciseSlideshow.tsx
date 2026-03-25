@@ -78,7 +78,7 @@ export const ExerciseSlideshow = ({ exercises, title = "Exercise Demos" }: Exerc
               </p>
             </div>
             <Badge variant="secondary" className="bg-white/20 text-white backdrop-blur-sm">
-              Awdan Vibes
+              SheSync
             </Badge>
           </div>
         </div>

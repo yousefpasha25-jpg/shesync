@@ -25,7 +25,7 @@ export async function submitOnboardingProfile(
 
     return {
       success: true,
-      message: result.message || "Profile created successfully! Welcome to Awdan Vibes 💚",
+      message: result.message || "Profile created successfully! Welcome to SheSync 💚",
     };
   } catch (error: unknown) {
     const errorMessage = error instanceof Error ? error.message : "A critical error occurred. Please try again.";

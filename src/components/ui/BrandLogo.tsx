@@ -28,7 +28,7 @@ export function BrandLogo({ className, withText = true, size = "md" }: BrandLogo
       <div className={cn("relative overflow-hidden rounded-full border-2 border-white/20 shadow-sm transition-transform hover:scale-110", sizes[size])}>
         <Image
           src="/awdan-logo.jpg.jpeg"
-          alt="Awdan Vibes Logo"
+          alt="SheSync Logo"
           fill
           className="object-cover"
           priority
@@ -36,7 +36,7 @@ export function BrandLogo({ className, withText = true, size = "md" }: BrandLogo
       </div>
       {withText && (
         <span className={cn("font-bold tracking-tight text-white italic", textSizes[size])}>
-          Awdan Vibes
+          SheSync
         </span>
       )}
     </div>

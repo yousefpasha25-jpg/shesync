@@ -162,7 +162,7 @@ export function WizardLayout({
                   {meta.icon}
                 </motion.span>
                 <div className="h-px flex-1 bg-white/10" />
-                <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-accent-gold/40">Awdan Vibes</span>
+                <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-accent-gold/40">SheSync</span>
               </div>
               
               <h1 className="text-3xl md:text-4xl tight-header font-heading text-foreground mb-4">

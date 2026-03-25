@@ -19,7 +19,7 @@ export default function CoachPage() {
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
       role: "assistant",
-      content: `Welcome back, ${firstName}. I've synchronized with your Awdan Vibes architecture. Your biometrics suggest a high-readiness state today. How can I assist your protocol?`,
+      content: `Welcome back, ${firstName}. I've synchronized with your SheSync profile. Your biometrics suggest a high-readiness state today. How can I assist your protocol?`,
     },
   ]);
   const [input, setInput] = useState("");
@@ -99,7 +99,7 @@ export default function CoachPage() {
             <h1 className="text-sm font-bold uppercase tracking-[0.2em] text-white">Coach Concierge</h1>
             <div className="flex items-center gap-1.5 mt-1">
               <span className="size-1.5 rounded-full bg-secondary animate-pulse"></span>
-              <span className="text-[10px] uppercase tracking-widest text-slate-500 font-medium italic">Awdan AI Active</span>
+              <span className="text-[10px] uppercase tracking-widest text-slate-500 font-medium italic">SheSync AI Active</span>
             </div>
           </div>
           <div className="size-10 rounded-sm bg-secondary/10 border border-secondary/20 flex items-center justify-center">
@@ -123,7 +123,7 @@ export default function CoachPage() {
               <p className="text-sm leading-relaxed tracking-wide">{msg.content}</p>
             </div>
             <span className="text-[9px] uppercase tracking-widest text-slate-600 font-bold px-1">
-              {msg.role === "assistant" ? "Awdan Engine" : "User Identifier"}
+              {msg.role === "assistant" ? "SheSync AI" : "You"}
             </span>
           </div>
         ))}

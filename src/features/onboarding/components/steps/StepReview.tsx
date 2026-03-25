@@ -125,7 +125,7 @@ export function StepReview({ form, isSubmitting, onboardingData }: StepReviewPro
                 className="mt-1 border-white/20 data-[state=checked]:bg-secondary data-[state=checked]:text-black"
               />
               <Label htmlFor="confirm-review" className="cursor-pointer text-[11px] font-medium leading-relaxed text-white/60 tracking-wide uppercase">
-                I confirm these biometric details are accurate and I am ready to initiate my Awdan Vibes journey.
+                I confirm these biometric details are accurate and I am ready to initiate my SheSync journey.
               </Label>
             </div>
           )}

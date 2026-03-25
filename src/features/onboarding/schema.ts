@@ -223,7 +223,7 @@ export type StepKey = (typeof stepKeys)[number];
 // Step metadata for UI
 export const stepMeta: Record<StepKey, { title: string; subtitle: string; icon: string }> = {
   welcome: {
-    title: "Welcome to Awdan Vibes",
+    title: "Welcome to SheSync",
     subtitle: "Let's build your personalized fitness journey",
     icon: "✨",
   },

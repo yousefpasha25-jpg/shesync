@@ -2,8 +2,8 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Awdan Vibes",
-    short_name: "Awdan",
+    name: "SheSync",
+    short_name: "SheSync",
     description:
       "A premium fitness platform that adapts to your body and lifestyle.",
     start_url: "/",

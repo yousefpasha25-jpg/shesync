@@ -49,7 +49,7 @@ export function HeroSection() {
             transition={{ delay: 0.2 }}
             className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed"
           >
-            Personalized training and nutrition powered by AI. Transform your body, mindset, and lifestyle with Awdan Vibes.
+            Personalized training and nutrition powered by AI. Transform your body, mindset, and lifestyle with SheSync.
           </motion.p>
 
           <motion.div

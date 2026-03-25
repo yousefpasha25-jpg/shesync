@@ -20,11 +20,11 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "SheSync by Awdan Vibes — AI Fitness for Women",
+  title: "SheSync — AI Fitness for Women",
   description: "The AI-powered wellness platform built exclusively for women. Hormonal cycle syncing, personalized workouts, MENA-culturally aware nutrition, and an empathetic AI coach.",
   keywords: ["women fitness", "cycle syncing", "AI coach", "femtech", "personalized workouts", "MENA nutrition"],
   openGraph: {
-    title: "SheSync by Awdan Vibes",
+    title: "SheSync — AI Fitness for Women",
     description: "Elite AI coaching tailored to your hormonal cycle. Personalized workouts + nutrition — built for women.",
     type: "website",
   },

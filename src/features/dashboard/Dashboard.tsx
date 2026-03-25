@@ -226,7 +226,7 @@ export default function Dashboard() {
       <div className="min-h-screen bg-background flex items-center justify-center">
       <div className="text-center">
         <BrandLogo size="lg" withText={false} className="animate-pulse mb-4" />
-        <p className="text-muted-foreground">Loading your Awdan Dashboard...</p>
+        <p className="text-muted-foreground">Loading your SheSync Dashboard...</p>
       </div>
       </div>
     );

@@ -22,7 +22,7 @@ export function AboutHero() {
           <div className="relative w-32 h-32 mb-8 rounded-full overflow-hidden border-4 border-white shadow-2xl">
             <Image
               src="/awdan-logo.jpg.jpeg"
-              alt="Awdan Vibes Logo"
+              alt="SheSync Logo"
               fill
               className="object-cover"
               priority
@@ -30,16 +30,16 @@ export function AboutHero() {
           </div>
           
           <h1 className="text-5xl md:text-7xl font-bold tracking-tighter mb-4 bg-clip-text text-transparent bg-gradient-to-b from-white to-white/70">
-            Awdan Vibes
+            SheSync
           </h1>
-          
+
           <p className="text-xl md:text-2xl text-primary font-medium mb-6">
             Transforming lives through wellness, fitness, and AI-powered coaching.
           </p>
-          
+
           <div className="max-w-2xl mx-auto">
             <p className="text-lg text-white/80 leading-relaxed">
-              Awdan Vibes was launched to help people build a healthy lifestyle through structured training, nutrition programs, and expert coaching.
+              SheSync was launched to help people build a healthy lifestyle through structured training, nutrition programs, and expert coaching.
             </p>
           </div>
         </motion.div>

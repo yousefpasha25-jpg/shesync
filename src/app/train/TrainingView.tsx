@@ -104,7 +104,7 @@ export function TrainingView({ initialPlan }: TrainingViewProps) {
         <div className="space-y-2">
           <h2 className="text-xl font-bold uppercase tracking-[0.2em] text-white">Architecting Protocol</h2>
           <p className="text-[10px] text-slate-500 uppercase tracking-widest leading-relaxed max-w-[240px]">
-            Awdan AI is analyzing your bio-metrics to curate a bespoke 4-week clinical regime.
+            SheSync AI is analyzing your bio-metrics to curate a bespoke 4-week clinical regime.
           </p>
         </div>
       </div>
@@ -140,7 +140,7 @@ export function TrainingView({ initialPlan }: TrainingViewProps) {
   return (
     <div className="px-6 pt-8 space-y-8 pb-32">
       <header className="space-y-2">
-        <p className="text-[10px] uppercase tracking-[0.2em] text-secondary font-semibold">Awdan Training</p>
+        <p className="text-[10px] uppercase tracking-[0.2em] text-secondary font-semibold">SheSync Training</p>
         <h1 className="text-3xl font-bold tracking-tight text-white">Your Studio</h1>
       </header>
 

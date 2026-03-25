@@ -56,7 +56,7 @@ export function PersonalizationEngine() {
         nutrition_nudges: ["Hydrate before your next workout", "Protein within 30 mins post-workout"],
         recovery_tips: ["Aim for 8 hours of sleep", "5 mins of active stretching"],
         daily_actions: ["Drink 2L of water", "Try to hit 10k steps"],
-        phase_insight: "Welcome to Awdan Vibes! Focus on establishing a consistent routine this week."
+        phase_insight: "Welcome to SheSync! Focus on establishing a consistent routine this week."
       });
       setContext({
         cycle_phase: "follicular",

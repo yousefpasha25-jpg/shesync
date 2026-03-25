@@ -22,7 +22,7 @@ export function VisionMission() {
             <h2 className="text-4xl font-bold tracking-tight">Evolving Since 2018</h2>
             <div className="space-y-4 text-muted-foreground text-lg leading-relaxed">
               <p>
-                Awdan Vibes was launched in 2018 with the mission of helping people live healthier lives.
+                SheSync was launched in 2018 with the mission of helping people live healthier lives.
               </p>
               <p>
                 The platform began as a fitness initiative focused on guiding individuals toward sustainable health habits.
@@ -31,7 +31,7 @@ export function VisionMission() {
                 Over the years, the team expanded to include coaches, nutritionists, and physiotherapists offering both online and on-ground programs.
               </p>
               <p className="font-medium text-foreground">
-                Today Awdan Vibes delivers personalized training, nutrition programs, and transformation journeys that help people change not only their bodies, but their mindset and lifestyle.
+                Today SheSync delivers personalized training, nutrition programs, and transformation journeys that help people change not only their bodies, but their mindset and lifestyle.
               </p>
             </div>
           </motion.div>

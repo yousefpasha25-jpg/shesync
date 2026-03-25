@@ -257,7 +257,7 @@ export default function Nutrition() {
       <div className="min-h-screen flex items-center justify-center">
       <div className="text-center">
         <BrandLogo size="lg" withText={false} className="animate-pulse mb-4" />
-        <p className="text-muted-foreground">Preparing your Awdan Nutrition Plan...</p>
+        <p className="text-muted-foreground">Preparing your SheSync Nutrition Plan...</p>
       </div>
       </div>
     );
@@ -481,7 +481,7 @@ export default function Nutrition() {
               <Card className="mb-6 border-primary/20 bg-card/60 backdrop-blur-sm">
                 <CardHeader className="text-center">
                   <CardTitle className="text-2xl mb-2">Ready for your custom meal plan?</CardTitle>
-                  <CardDescription>Generate a hyper-personalized 7-day nutrition schedule using Awdan Vibes AI.</CardDescription>
+                  <CardDescription>Generate a hyper-personalized 7-day nutrition schedule using SheSync AI.</CardDescription>
                 </CardHeader>
                 <CardContent className="flex justify-center pb-8 p-6">
                   <Button size="lg" onClick={generateMealPlan} className="gap-2 text-lg px-8 py-6 rounded-xl hover:scale-105 transition-transform bg-primary">

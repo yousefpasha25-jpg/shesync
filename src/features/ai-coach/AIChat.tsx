@@ -126,7 +126,7 @@ export default function AIChat() {
       <div className="flex items-center justify-between p-4 border-b bg-primary text-primary-foreground">
         <div className="flex items-center gap-2">
           <MessageCircle className="h-5 w-5" />
-          <h3 className="font-semibold">Awdan Coach</h3>
+          <h3 className="font-semibold">SheSync Coach</h3>
         </div>
         <Button
           variant="ghost"
@@ -143,7 +143,7 @@ export default function AIChat() {
           {messages.length === 0 && (
             <div className="text-center text-muted-foreground py-8">
               <MessageCircle className="h-12 w-12 mx-auto mb-2 opacity-50" />
-              <p>مرحباً! أنا Awdan Coach</p>
+              <p>مرحباً! أنا SheSync Coach</p>
               <p className="text-sm">اسألني عن التمارين، التغذية، أو أي شيء يتعلق باللياقة</p>
             </div>
           )}

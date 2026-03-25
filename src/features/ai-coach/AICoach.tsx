@@ -166,7 +166,7 @@ export default function AICoach() {
           <div className="flex-1 text-center">
             <h1 className="text-xl font-bold flex items-center justify-center gap-2">
               <Sparkles className="h-5 w-5 text-primary" />
-              Awdan Coach
+              SheSync Coach
             </h1>
             <p className="text-xs text-muted-foreground">مساعدك الشخصي في اللياقة والتغذية</p>
           </div>

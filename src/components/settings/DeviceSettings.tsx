@@ -49,7 +49,7 @@ export function DeviceSettings() {
           <h2 className="text-slate-900 dark:text-slate-100 text-sm font-bold tracking-widest-lg uppercase">Connected Devices</h2>
         </div>
         <div className="flex items-center">
-          <span className="text-[10px] font-bold tracking-widest text-accent-gold border border-accent-gold/30 px-2 py-0.5 rounded uppercase">Awdan Elite</span>
+          <span className="text-[10px] font-bold tracking-widest text-accent-gold border border-accent-gold/30 px-2 py-0.5 rounded uppercase">SheSync Elite</span>
         </div>
       </header>
 

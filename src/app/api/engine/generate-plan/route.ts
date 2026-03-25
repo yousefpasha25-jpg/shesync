@@ -228,7 +228,7 @@ export async function POST(req: Request) {
     const cycleTracking = healthMetrics?.cycle_tracking_enabled ? "Enabled" : "Disabled";
     const pregnancy = healthMetrics?.is_pregnant ? "Pregnant" : "Not Pregnant";
 
-    const systemPrompt = `You are the "Awdan Intelligent Engine", the elite clinical generation logic for Awdan Vibes.
+    const systemPrompt = `You are the "SheSync Intelligent Engine", the elite clinical generation logic for SheSync.
 Your objective: Generate a world-class, 4-week hormonal-syncing fitness and nutrition master protocol.
 
 <USER_DATA_PROFILE>
@@ -240,7 +240,7 @@ Your objective: Generate a world-class, 4-week hormonal-syncing fitness and nutr
 </USER_DATA_PROFILE>
 
 PRINCIPLES OF ELITE CURATION:
-1. HORMONAL SYNCING (The Awdan Method):
+1. HORMONAL SYNCING (The SheSync Method):
    - Week 1 (Follicular): Focus on high-intensity strength, building muscle, and metabolic conditioning.
    - Week 2 (Ovulatory): Peak strength and energy. High-impact or heavy lifting.
    - Week 3 (Luteal): Shift to steady-state cardio and moderate resistance. Manage inflammation and cravings.

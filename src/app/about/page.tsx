@@ -7,8 +7,8 @@ import { WhyAwdan } from "@/features/about/WhyAwdan";
 import { CTASection } from "@/features/about/CTASection";
 
 export const metadata: Metadata = {
-  title: "About Awdan Vibes | SheSync",
-  description: "Learn about the mission behind SheSync — AI-powered fitness built exclusively for women by Awdan Vibes.",
+  title: "About SheSync | AI Fitness for Women",
+  description: "Learn about the mission behind SheSync — AI-powered fitness built exclusively for women.",
 };
 
 export default function AboutPage() {
