@@ -1,0 +1,412 @@
+{
+  "Core": [
+    {
+      "category": "Core",
+      "type": "Core-Stability",
+      "name": "Forearm Plank Reach",
+      "equipment": "Bodyweight",
+      "target_muscles": "Transverse Abs, Shoulders",
+      "instructions": "Reach forward without shifting hips",
+      "video_link": "Link",
+      "level": "Intermediate"
+    },
+    {
+      "category": "Core",
+      "type": "Core Stability",
+      "name": "Side Plank with Reach Under",
+      "equipment": "Bodyweight",
+      "target_muscles": "Obliques, Transverse Abs",
+      "instructions": "Rotate and reach under torso, control the movement",
+      "video_link": "Link",
+      "level": "Intermediate"
+    },
+    {
+      "category": "Core",
+      "type": "",
+      "name": "Bear Plank Shoulder Taps",
+      "equipment": "Bodyweight",
+      "target_muscles": "",
+      "instructions": "10 per side, keep hips steady",
+      "video_link": "Link",
+      "level": "Suitable for all"
+    },
+    {
+      "category": "Core",
+      "type": "",
+      "name": "Bird Dog Hold",
+      "equipment": "Bodyweight",
+      "target_muscles": "",
+      "instructions": "Hold 5 sec each side, keep back flat",
+      "video_link": "Link",
+      "level": "Suitable for all"
+    },
+    {
+      "category": "Core",
+      "type": "",
+      "name": "Deadbug with Light Mini Band",
+      "equipment": "Mini Band",
+      "target_muscles": "",
+      "instructions": "Slow, controlled movement",
+      "video_link": "Link",
+      "level": "Suitable for all"
+    },
+    {
+      "category": "Core",
+      "type": "Mobility",
+      "name": "Deep Breathing with Arm Raises",
+      "equipment": "Bodyweight",
+      "target_muscles": "",
+      "instructions": "Inhale deeply while raising both arms overhead slowly.\nExhale fully while bringing the arms down in front or to the sides.\nFocus on diaphragmatic breathing and full range of motion.\nRepeat for 5–10 deep breaths.",
+      "video_link": "Link",
+      "level": "Beginner"
+    },
+    {
+      "category": "Core",
+      "type": "Mobility",
+      "name": "Seated Arm Reach + Twist",
+      "equipment": "Chair",
+      "target_muscles": "",
+      "instructions": "Sit upright on a bench or chair with feet flat.\nReach one arm overhead while gently rotating the torso to the opposite side.\nHold for 1–2 seconds and return to center.\nAlternate sides for 10 reps each.\nKeep the core engaged and avoid leaning back.",
+      "video_link": "Link",
+      "level": "Beginner"
+    },
+    {
+      "category": "Core",
+      "type": "Core-Stability",
+      "name": "Seated Knee Lift",
+      "equipment": "Bodyweight",
+      "target_muscles": "Lower Abs / Hip Flexors",
+      "instructions": "Sit on a bench or chair, feet flat. Lift one knee toward chest, hold for 2 seconds, then lower. Alternate legs. Keep core tight and spine upright.",
+      "video_link": "Link",
+      "level": "Beginner"
+    },
+    {
+      "category": "Core",
+      "type": "Core-Stability",
+      "name": "Bird Dog on Incline Bench",
+      "equipment": "Bench",
+      "target_muscles": "Core, Glutes, Shoulders",
+      "instructions": "Place hands on the top edge of an incline bench and knees behind on the floor (or seated if needed). Extend opposite arm and leg, hold briefly, then return. Keep hips square and core engaged throughout.",
+      "video_link": "Link",
+      "level": "Beginner–Intermediate"
+    },
+    {
+      "category": "Core",
+      "type": "Core-Stability",
+      "name": "Deadbug",
+      "equipment": "Bodyweight",
+      "target_muscles": "\tDeep Core / Transverse Abdominis",
+      "instructions": "Lie on your back with arms and knees up. Slowly extend one arm and opposite leg for 3–5 seconds. Keep back flat. Return and switch sides. Focus on control and breathing.",
+      "video_link": "Link",
+      "level": "Beginner–Intermediate"
+    },
+    {
+      "category": "Core",
+      "type": "Core Stability / Anti-Rotation",
+      "name": "Band Press-Out (Anti-Rotation)",
+      "equipment": "Resistance Band",
+      "target_muscles": "Obliques, Transverse Abs",
+      "instructions": "Sit tall on a bench or box. Hold a resistance band anchored to the side. Press it straight out from your chest, resisting any torso rotation. Hold briefly, then return. Repeat both sides.",
+      "video_link": "Link",
+      "level": "Beginner–Intermediate"
+    }
+  ],
+  "Glutes / Core": [
+    {
+      "category": "Glutes / Core",
+      "type": "Glute Activation / Core Stability",
+      "name": "Modified Side Plank Leg Lifts",
+      "equipment": "Bodyweight",
+      "target_muscles": "Obliques, Glutes",
+      "instructions": "Bottom knee down, lift top leg",
+      "video_link": "Link",
+      "level": "Beginner"
+    },
+    {
+      "category": "Glutes / Core",
+      "type": "Glute Activation / Core Stability",
+      "name": "Wall Glute March (Lying)",
+      "equipment": "Wall",
+      "target_muscles": "Glutes, Hamstrings, Core",
+      "instructions": "Lie on your back, feet flat on wall (hips and knees ~90°). Lift hips into a bridge. While holding, lift one knee toward your chest, then alternate. Keep hips level and engaged throughout.",
+      "video_link": "Link",
+      "level": "Beginner–Intermediate"
+    },
+    {
+      "category": "Glutes / Core",
+      "type": "Isometric Strength",
+      "name": "Isometric Glute Bridge Hold ",
+      "equipment": "Bodyweight",
+      "target_muscles": "Glutes, Hamstrings, Core",
+      "instructions": "Lie on your back, knees bent, feet flat. Lift hips to bridge position and hold for 10 seconds while squeezing glutes. Keep hips level and core engaged. Lower and repeat.",
+      "video_link": "Link",
+      "level": "Beginner"
+    }
+  ],
+  "Upper Body": [
+    {
+      "category": "Upper Body",
+      "type": "Pull / Posture",
+      "name": "Face Pulls",
+      "equipment": "Resistance Band",
+      "target_muscles": "Rear Delts, Upper Back",
+      "instructions": "Pull towards face, elbows high",
+      "video_link": "Link",
+      "level": "Beginner"
+    },
+    {
+      "category": "Upper Body",
+      "type": "",
+      "name": "Chest Fly",
+      "equipment": "Resistance Band",
+      "target_muscles": "",
+      "instructions": "Anchor at door, control tempo",
+      "video_link": "Link",
+      "level": "Suitable for all"
+    },
+    {
+      "category": "Upper Body",
+      "type": "",
+      "name": "Seated Row",
+      "equipment": "Resistance Band",
+      "target_muscles": "",
+      "instructions": "Sit on floor, row to ribs",
+      "video_link": "Link",
+      "level": "Suitable for all"
+    },
+    {
+      "category": "Upper Body",
+      "type": "",
+      "name": "Z-Press",
+      "equipment": "Dumbbells or Band",
+      "target_muscles": "",
+      "instructions": "Seated press from floor, no back support",
+      "video_link": "Link",
+      "level": "Suitable for all"
+    },
+    {
+      "category": "Upper Body",
+      "type": "",
+      "name": "Wall Angels",
+      "equipment": "Bodyweight",
+      "target_muscles": "",
+      "instructions": "Heels, glutes, shoulders against wall",
+      "video_link": "Link",
+      "level": "Suitable for all"
+    },
+    {
+      "category": "Upper Body",
+      "type": "",
+      "name": "Quadruped Wall Shoulder Taps",
+      "equipment": "Bodyweight",
+      "target_muscles": "",
+      "instructions": "Tap wall while maintaining control",
+      "video_link": "Link",
+      "level": "Suitable for all"
+    },
+    {
+      "category": "Upper Body",
+      "type": "",
+      "name": "Band Pull Apart",
+      "equipment": "Resistance Band",
+      "target_muscles": "",
+      "instructions": "Stand tall, pull band apart at chest height",
+      "video_link": "Link",
+      "level": "Suitable for all"
+    },
+    {
+      "category": "Upper Body",
+      "type": "",
+      "name": "Wall Slide Snow Angels",
+      "equipment": "Bodyweight",
+      "target_muscles": "",
+      "instructions": "Heels/glutes/shoulders touching wall",
+      "video_link": "Link",
+      "level": "Suitable for all"
+    },
+    {
+      "category": "Upper Body",
+      "type": "Strength",
+      "name": "Seated Dumbbell Arnold Press",
+      "equipment": "Dumbbells + Bench",
+      "target_muscles": "Shoulders (Anterior, Lateral Delts), Biceps",
+      "instructions": "Sit tall on a bench, hold dumbbells at shoulder height with palms facing you. Press overhead while rotating palms to face forward. Reverse to return. Control the motion throughout.",
+      "video_link": "Link",
+      "level": "Intermediate"
+    }
+  ],
+  "Lower Body": [
+    {
+      "category": "Lower Body",
+      "type": "",
+      "name": "Box/Bench Squat",
+      "equipment": "Chair or Box",
+      "target_muscles": "",
+      "instructions": "Control descent, knees out",
+      "video_link": "Link",
+      "level": "Suitable for all"
+    },
+    {
+      "category": "Lower Body",
+      "type": "",
+      "name": "Box Squat with Band",
+      "equipment": "Chair + Mini Band",
+      "target_muscles": "",
+      "instructions": "Band above knees for glute activation",
+      "video_link": "Link",
+      "level": "Suitable for all"
+    },
+    {
+      "category": "Lower Body",
+      "type": "",
+      "name": "Suitcase Deadlifts",
+      "equipment": "Dumbbell/Kettlebell",
+      "target_muscles": "",
+      "instructions": "Alternate sides each set",
+      "video_link": "Link",
+      "level": "Suitable for all"
+    },
+    {
+      "category": "Lower Body",
+      "type": "",
+      "name": "Romanian Deadlifts",
+      "equipment": "Dumbbells",
+      "target_muscles": "",
+      "instructions": "Slow tempo, hinge hips",
+      "video_link": "Link",
+      "level": "Suitable for all"
+    },
+    {
+      "category": "Lower Body",
+      "type": "",
+      "name": "Side-Lying Clamshells",
+      "equipment": "Medium Resistance Band",
+      "target_muscles": "",
+      "instructions": "Feet together, open knees",
+      "video_link": "Link",
+      "level": "Suitable for all"
+    },
+    {
+      "category": "Lower Body",
+      "type": "",
+      "name": "Donkey Kicks",
+      "equipment": "Bodyweight",
+      "target_muscles": "",
+      "instructions": "Focus on glute squeeze",
+      "video_link": "Link",
+      "level": "Suitable for all"
+    },
+    {
+      "category": "Lower Body",
+      "type": "",
+      "name": "Swiss Ball Hamstring Curls",
+      "equipment": "Stability Ball",
+      "target_muscles": "",
+      "instructions": "Hips up, curl heels in",
+      "video_link": "Link",
+      "level": "Suitable for all"
+    },
+    {
+      "category": "Lower Body",
+      "type": "",
+      "name": "Banded Good Mornings",
+      "equipment": "Resistance Band",
+      "target_muscles": "",
+      "instructions": "Hinge from hips, keep back flat",
+      "video_link": "Link",
+      "level": "Suitable for all"
+    },
+    {
+      "category": "Lower Body",
+      "type": "",
+      "name": "Goblet Squats to Chair",
+      "equipment": "Dumbbell + Chair",
+      "target_muscles": "",
+      "instructions": "Keep upright torso",
+      "video_link": "Link",
+      "level": "Suitable for all"
+    },
+    {
+      "category": "Lower Body",
+      "type": "",
+      "name": "Band-Resisted Leg Extensions",
+      "equipment": "Mini Band + Chair",
+      "target_muscles": "",
+      "instructions": "Extend legs slowly",
+      "video_link": "Link",
+      "level": "Suitable for all"
+    },
+    {
+      "category": "Lower Body",
+      "type": "",
+      "name": "Frog Pumps",
+      "equipment": "Bodyweight",
+      "target_muscles": "",
+      "instructions": "Feet together, knees wide",
+      "video_link": "Link",
+      "level": "Suitable for all"
+    },
+    {
+      "category": "Lower Body",
+      "type": "",
+      "name": "Supine March with Band",
+      "equipment": "Mini Band",
+      "target_muscles": "",
+      "instructions": "Band on ankles, slow controlled",
+      "video_link": "Link",
+      "level": "Suitable for all"
+    },
+    {
+      "category": "Lower Body",
+      "type": "",
+      "name": "Chair Sit-to-Stand (5s Down)",
+      "equipment": "Chair",
+      "target_muscles": "",
+      "instructions": "Eccentric-focused control",
+      "video_link": "Link",
+      "level": "Suitable for all"
+    },
+    {
+      "category": "Lower Body",
+      "type": "",
+      "name": "Glute Bridge + Iso Squeeze",
+      "equipment": "Ball/Pillow",
+      "target_muscles": "",
+      "instructions": "Hold at top, squeeze hard",
+      "video_link": "Link",
+      "level": "Suitable for all"
+    }
+  ],
+  "Mobility": [
+    {
+      "category": "Mobility",
+      "type": "Joint Mobility",
+      "name": "Ankle Circles (Non-Weighted)",
+      "equipment": "Bodyweight",
+      "target_muscles": "Ankles",
+      "instructions": "Sit or lie down with legs extended. Lift one foot slightly and slowly rotate the ankle in a full circle, clockwise and then counter-clockwise. 10 reps each direction. Keep the movement smooth and controlled.",
+      "video_link": "Link",
+      "level": "Beginner"
+    },
+    {
+      "category": "Mobility",
+      "type": "Joint Health",
+      "name": "Quadruped Shoulder CARs",
+      "equipment": "Bodyweight",
+      "target_muscles": "Shoulder joint (glenohumeral mobility), Scapular stabilizers, rotator cuff muscles (supraspinatus, infraspinatus, subscapularis, teres minor), Core muscles, spinal erectors",
+      "instructions": "Move only through pain-free range of motion.\nKeep your neck relaxed, eyes on the floor.\nFocus on smooth, controlled motion, avoiding jerks.",
+      "video_link": "Link",
+      "level": "Suitable for all"
+    },
+    {
+      "category": "Mobility",
+      "type": "Stretching",
+      "name": "Side-Lying Windmill",
+      "equipment": "Bodyweight",
+      "target_muscles": "Shoulder & Thoracic Spine Mobility",
+      "instructions": "Keep your top knee in contact with the floor to isolate thoracic rotation.\nMove slowly and with control — focus on joint mobility, not speed.\nAvoid shrugging your shoulder toward your ear.",
+      "video_link": "Link",
+      "level": "Suitable for all"
+    }
+  ]
+}

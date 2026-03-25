@@ -34,3 +34,23 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# build & lint log artifacts
+build_log.txt
+build_log_utf8.txt
+build_full_log.txt
+build_result.txt
+lint_output.txt
+lint_output_utf8.txt
+final_lint_log.txt
+tsc_errors.txt
+dev_error.html
+
+# binary / archive artifacts
+files.zip
+
+# stitch UI mockup exports
+stitch/
+
+# Claude local settings
+.claude/settings.local.json
