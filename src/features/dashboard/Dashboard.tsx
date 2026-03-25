@@ -2,17 +2,14 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
-import { Flame, Dumbbell, Apple, Droplet, TrendingUp, Users, Settings, LogOut, Moon, Sun, Sparkles, CreditCard, Languages, Heart, Activity, Calendar, Clock, Plus } from "lucide-react";
+import { Flame, Dumbbell, Apple, Droplet, TrendingUp, Users, Settings, Moon, Sparkles, Heart, Activity, Calendar, Clock, Plus } from "lucide-react";
 import { supabase } from "@/lib/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import AIChat from "@/features/ai-coach/AIChat";
-import { useTheme } from "next-themes";
-import { useLanguage } from "@/contexts/LanguageContext";
 import { PersonalizationEngine } from "@/features/onboarding/PersonalizationEngine";
 import { ProgressTracker } from "@/features/progress/ProgressTracker";
 import { BrandLogo } from "@/components/ui/BrandLogo";
@@ -34,13 +31,6 @@ export default function Dashboard() {
   const [todayWorkout, setTodayWorkout] = useState<any>(null);
   const router = useRouter();
   const { toast } = useToast();
-  const { theme, setTheme } = useTheme();
-  const { toggleLanguage } = useLanguage();
-
-  const toggleTheme = () => {
-    setTheme(theme === "dark" ? "light" : "dark");
-  };
-
   useEffect(() => {
     const fetchUserData = async () => {
       try {
@@ -163,11 +153,6 @@ export default function Dashboard() {
     };
   }, [router, toast]);
 
-  const handleLogout = async () => {
-    await supabase.auth.signOut();
-    router.push("/");
-  };
-
   const handleAddWater = async () => {
     if (!user || addingWater) return;
     
@@ -243,29 +228,8 @@ export default function Dashboard() {
     : "Let's make today count!";
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      <header className="border-b border-border bg-card/50 backdrop-blur-sm sticky top-0 z-50">
-        <div className="container mx-auto px-4 py-3 flex items-center justify-between">
-          <Link href="/dashboard" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-            <BrandLogo size="sm" withText={true} className="flex-row items-center gap-3" />
-          </Link>
-          <div className="flex items-center gap-2">
-            <Button variant="outline" size="sm" className="gap-1" onClick={() => router.push("/pricing")}>
-              <CreditCard className="h-4 w-4" />
-              Plans & Pricing
-            </Button>
-            <Button variant="ghost" size="icon" onClick={toggleTheme}>
-              {theme === "light" ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
-            </Button>
-            <Button variant="ghost" size="icon" onClick={handleLogout}>
-              <LogOut className="h-4 w-4" />
-            </Button>
-          </div>
-        </div>
-      </header>
-
-      {/* Global Responsive Padding and Max-Width are handled in layout.tsx */}
-      <div className="py-6">
+    <div>
+      <div className="py-2">
         <div className="mb-6 flex items-center justify-between">
           <div>
             <h1 className="text-2xl font-bold mb-1">

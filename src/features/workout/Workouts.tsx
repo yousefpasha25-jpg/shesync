@@ -6,7 +6,7 @@ import { supabase } from "@/lib/supabase/client";
 import { Button } from "@/components/ui/button";
 import { updateFitnessGoalsAction } from "@/features/workout/actions";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { ArrowLeft, Play, ExternalLink, Calendar, Info, Check, Moon, Sun, Sparkles } from "lucide-react";
+import { ArrowLeft, Play, ExternalLink, Calendar, Info, Check, Sparkles } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { useToast } from "@/hooks/use-toast";
@@ -14,11 +14,9 @@ import { Textarea } from "@/components/ui/textarea";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Label } from "@/components/ui/label";
 import { Slider } from "@/components/ui/slider";
-import { useTheme } from "next-themes";
 import { ExerciseSlideshow } from "@/features/workout/ExerciseSlideshow";
 import { Skeleton } from "@/components/ui/skeleton";
 import { BrandLogo } from "@/components/ui/BrandLogo";
-import Link from "next/link";
 
 
 // Exercise demo data for Day 3 - Full Body
@@ -52,12 +50,6 @@ export default function Workouts() {
   const [workoutNotes, setWorkoutNotes] = useState("");
   const [workoutRPE, setWorkoutRPE] = useState([5]);
   const { toast } = useToast();
-  const { theme, setTheme } = useTheme();
-
-  const toggleTheme = () => {
-    setTheme(theme === "dark" ? "light" : "dark");
-  };
-
   useEffect(() => {
     const checkAuth = async () => {
       const {
@@ -82,7 +74,7 @@ export default function Workouts() {
       const { data: profileData } = await supabase
         .from("profiles")
         .select("*")
-        .eq("id", user.id)
+        .eq("user_id", user.id)
         .maybeSingle();
       setUserProfile(profileData);
 
@@ -176,12 +168,12 @@ export default function Workouts() {
       const today = new Date().toISOString().split("T")[0];
 
       const { error } = await supabase.from("workout_logs").upsert({
-        user_id: currentUser.id,
+        profile_id: currentUser.id,
         date: today,
         completed: true,
         notes: workoutNotes.trim() || null,
         rpe: workoutRPE[0],
-      }, { onConflict: 'user_id,date' });
+      }, { onConflict: 'profile_id,date' });
 
       if (error) throw error;
 
@@ -217,27 +209,8 @@ export default function Workouts() {
   }
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      <header className="border-b border-border bg-card/80 backdrop-blur-md sticky top-0 z-50">
-        <div className="container mx-auto px-4 py-2 flex items-center justify-between">
-          <Link href="/dashboard" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-            <BrandLogo size="sm" withText={false} />
-          </Link>
-          <div className="flex-1 text-center">
-            <h1 className="text-xl font-bold">Workouts</h1>
-            {fitnessPrefs && (
-              <p className="text-[10px] text-muted-foreground uppercase tracking-widest">
-                {fitnessPrefs.level} • {fitnessPrefs.frequency_days_per_week} days/week
-              </p>
-            )}
-          </div>
-          <Button variant="ghost" size="icon" onClick={toggleTheme}>
-            {theme === "light" ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
-          </Button>
-        </div>
-      </header>
-
-      <main className="container mx-auto px-4 py-8 max-w-5xl">
+    <div>
+      <main className="py-4 max-w-5xl mx-auto">
         {/* AI Suggested Exercises */}
         {aiExercises.length > 0 && (
           <Card className="mb-6 bg-gradient-to-r from-primary/10 via-primary/5 to-transparent border-primary/30">

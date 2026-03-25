@@ -27,7 +27,7 @@ export function BrandLogo({ className, withText = true, size = "md" }: BrandLogo
     <div className={cn("flex items-center gap-2", className)}>
       <div className={cn("relative overflow-hidden rounded-full border-2 border-white/20 shadow-sm transition-transform hover:scale-110", sizes[size])}>
         <Image
-          src="/awdan-logo.jpg.jpeg"
+          src="/logo.jpg"
           alt="SheSync Logo"
           fill
           className="object-cover"

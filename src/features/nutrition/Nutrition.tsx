@@ -6,16 +6,14 @@ import { supabase } from "@/lib/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
-import { ArrowLeft, Calendar, Info, Moon, Sun, Sparkles } from "lucide-react";
+import { ArrowLeft, Calendar, Info, Sparkles } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
-import { useTheme } from "next-themes";
 import { saveWeeklyMealPlanAction, logMealAction } from "@/features/nutrition/actions";
 import AddMealDialog from "./AddMealDialog";
 import { Skeleton } from "@/components/ui/skeleton";
 import { BrandLogo } from "@/components/ui/BrandLogo";
-import Link from "next/link";
 
 
 type FoodAlternative = {
@@ -38,7 +36,6 @@ type WeeklyMealPlan = {
 export default function Nutrition() {
   const router = useRouter();
   const { toast } = useToast();
-  const { theme, setTheme } = useTheme();
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState<any>(null);
   const [nutritionPrefs, setNutritionPrefs] = useState<any>(null);
@@ -53,9 +50,6 @@ export default function Nutrition() {
     fats: 0
   });
 
-  const toggleTheme = () => {
-    setTheme(theme === "dark" ? "light" : "dark");
-  };
 
   const fetchFoodAlternatives = async () => {
     try {
@@ -264,27 +258,8 @@ export default function Nutrition() {
   }
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      <header className="border-b border-border bg-card/80 backdrop-blur-md sticky top-0 z-50">
-        <div className="container mx-auto px-4 py-2 flex items-center justify-between">
-          <Link href="/dashboard" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-            <BrandLogo size="sm" withText={false} />
-          </Link>
-          <div className="flex-1 text-center">
-            <h1 className="text-xl font-bold">Nutrition</h1>
-            {nutritionPrefs && (
-              <p className="text-[10px] text-muted-foreground uppercase tracking-widest">
-                {nutritionPrefs.meal_frequency?.replace('_', ' ') || '3 meals'} • Water goal: {nutritionPrefs.water_liters}L
-              </p>
-            )}
-          </div>
-          <Button variant="ghost" size="icon" onClick={() => setTheme(theme === "light" ? "dark" : "light")}>
-            {theme === "light" ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
-          </Button>
-        </div>
-      </header>
-
-      <main className="container mx-auto px-4 py-8 max-w-6xl">
+    <div>
+      <main className="py-4 max-w-6xl mx-auto">
         <Tabs defaultValue="tracker" className="w-full">
           <TabsList className="grid w-full grid-cols-3 mb-6">
             <TabsTrigger value="tracker">Daily Tracker</TabsTrigger>
