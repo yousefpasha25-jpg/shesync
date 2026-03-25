@@ -65,10 +65,11 @@ export function TeamSection() {
                   >
                     <div className="flex flex-col items-center text-center">
                       <div className="w-24 h-24 rounded-2xl bg-black mb-4 overflow-hidden group-hover:scale-105 transition-transform relative">
-                        <NextImage 
-                          src={member.avatar} 
+                        <NextImage
+                          src={member.avatar}
                           alt={member.name}
                           fill
+                          sizes="96px"
                           className="object-cover"
                         />
                       </div>

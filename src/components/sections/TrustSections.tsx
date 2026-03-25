@@ -61,7 +61,7 @@ export function TrustSections() {
               className="group p-8 rounded-[2rem] bg-secondary/30 border border-border hover:bg-secondary/50 transition-all text-center"
             >
               <div className="size-24 rounded-2xl bg-black mx-auto mb-6 overflow-hidden border-2 border-primary/20 group-hover:scale-105 transition-transform relative">
-                <NextImage src={coach.avatar} alt={coach.name} title={coach.name} fill className="object-cover" />
+                <NextImage src={coach.avatar} alt={coach.name} title={coach.name} fill sizes="96px" className="object-cover" />
               </div>
               <h3 className="text-xl font-bold mb-1">{coach.name}</h3>
               <p className="text-primary text-sm font-semibold mb-4 italic italic">{coach.role}</p>
