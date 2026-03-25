@@ -30,6 +30,7 @@ export function BrandLogo({ className, withText = true, size = "md" }: BrandLogo
           src="/logo.jpg"
           alt="SheSync Logo"
           fill
+          sizes="128px"
           className="object-cover"
           priority
         />
