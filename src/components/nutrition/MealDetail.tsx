@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
 
 interface MealDetailProps {
@@ -20,17 +20,19 @@ export function MealDetail({
   micronutrients,
   protocol,
 }: MealDetailProps) {
+  const router = useRouter();
   return (
     <div className="relative mx-auto max-w-md min-h-screen bg-background-dark pb-32">
       {/* Top App Bar / Glass Header */}
       <div className="fixed top-0 left-0 right-0 z-50 glass border-b border-primary/10 max-w-md mx-auto">
         <div className="flex items-center p-4 justify-between">
-          <Link 
-            href="/"
+          <button
+            onClick={() => router.back()}
+            aria-label="Go back"
             className="text-slate-100 flex items-center justify-center h-10 w-10 bg-card-dark border border-primary/20"
           >
             <span className="material-symbols-outlined">arrow_back</span>
-          </Link>
+          </button>
           <div className="px-3 py-1 bg-accent-gold/10 border border-accent-gold/30">
             <p className="text-accent-gold text-[10px] uppercase font-bold tracking-[0.2em]">Premium Recipe</p>
           </div>

@@ -213,8 +213,8 @@ export async function POST(req: Request) {
     const client = new GoogleGenAI({ apiKey });
 
     // ── Fetch user profile ──
-    const { data: profile } = await supabase.from('profiles').select('id, full_name, age, fitness_level, fitness_goals, equipment_access').eq('user_id', user.id).single();
-    const { data: healthMetrics } = await supabase.from('health_metrics').select('weight, height, cycle_tracking_enabled, last_period_date, is_pregnant, pregnancy_weeks').eq('user_id', user.id).single();
+    const { data: profile } = await supabase.from('profiles').select('id, full_name, age, fitness_level, fitness_goals, equipment_access').eq('user_id', user.id).maybeSingle();
+    const { data: healthMetrics } = await supabase.from('health_metrics').select('weight, height, cycle_tracking_enabled, last_period_date, is_pregnant, pregnancy_weeks').eq('user_id', user.id).maybeSingle();
 
     const userName = sanitize(profile?.full_name || "Valued User", 50);
     const age = profile?.age || 25;

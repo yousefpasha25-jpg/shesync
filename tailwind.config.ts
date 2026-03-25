@@ -56,6 +56,10 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        // Semantic aliases used across components
+        "accent-gold": "#D4A373",
+        "card-dark": "hsl(var(--card))",
+        "background-dark": "hsl(var(--background))",
         chart: {
           '1': 'hsl(var(--chart-1))',
           '2': 'hsl(var(--chart-2))',

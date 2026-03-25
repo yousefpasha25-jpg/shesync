@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 
@@ -25,16 +25,18 @@ export function ExerciseDetail({
   formSteps,
   muscleGroups,
 }: ExerciseDetailProps) {
+  const router = useRouter();
   return (
     <div className="relative flex min-h-screen w-full flex-col pb-32">
       {/* Top Navigation */}
       <header className="absolute top-0 left-0 right-0 z-20 flex items-center justify-between p-6 bg-gradient-to-b from-black/60 to-transparent">
-        <Link 
-          href="/"
+        <button
+          onClick={() => router.back()}
+          aria-label="Go back"
           className="flex items-center justify-center size-10 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-white/20 transition-colors"
         >
           <span className="material-symbols-outlined !text-[20px]">arrow_back_ios_new</span>
-        </Link>
+        </button>
         <h1 className="text-white text-sm font-medium tracking-[0.2em] uppercase">Exercise Detail</h1>
         <button className="flex items-center justify-center size-10 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white">
           <span className="material-symbols-outlined !text-[20px]">more_horiz</span>

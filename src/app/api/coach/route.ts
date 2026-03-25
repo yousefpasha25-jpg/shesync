@@ -125,8 +125,8 @@ You operate at the level of biomechanics, hormonal optimization, and physiologic
             mealPlan: planJson.meal_plan || planJson
           });
         } catch (err: unknown) {
-          console.error("Failed to parse Coach Prime JSON:", responseText);
-          console.error("Extraction error:", err instanceof Error ? err.message : err);
+          console.error("Failed to parse Coach Prime JSON (first 100 chars):", responseText.slice(0, 100));
+          console.error("Extraction error:", err instanceof Error ? err.message : String(err));
           return NextResponse.json({ error: "The AI returned an invalid plan format. Please try again." }, { status: 502 });
         }
       } catch (genError: unknown) {

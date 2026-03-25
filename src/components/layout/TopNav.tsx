@@ -44,10 +44,15 @@ export function TopNav() {
             <CreditCard className="h-4 w-4" />
             Plans & Pricing
           </Button>
-          <Button variant="ghost" size="icon" onClick={toggleLanguage}>
+          <Button variant="ghost" size="icon" onClick={toggleLanguage} aria-label="Toggle language">
             <Languages className="h-4 w-4" />
           </Button>
-          <Button variant="ghost" size="icon" onClick={() => setTheme(theme === "light" ? "dark" : "light")}>
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+            aria-label={theme === "light" ? "Switch to dark mode" : "Switch to light mode"}
+          >
             {!mounted ? (
               <div className="h-4 w-4" />
             ) : theme === "light" ? (
@@ -56,7 +61,7 @@ export function TopNav() {
               <Sun className="h-4 w-4" />
             )}
           </Button>
-          <Button variant="ghost" size="icon" onClick={handleLogout}>
+          <Button variant="ghost" size="icon" onClick={handleLogout} aria-label="Sign out">
             <LogOut className="h-4 w-4" />
           </Button>
         </div>

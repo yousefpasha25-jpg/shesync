@@ -1,5 +1,6 @@
 "use client";
 
+import { useMemo } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 // Stub translations for Landing page
@@ -50,9 +51,10 @@ const translations = {
 
 export const useTranslation = () => {
   const { language } = useLanguage();
-  
-  const t = translations[language as keyof typeof translations] || translations.en;
-  const isRTL = language === 'ar';
 
-  return { t, isRTL, language };
+  return useMemo(() => {
+    const t = translations[language as keyof typeof translations] || translations.en;
+    const isRTL = language === 'ar';
+    return { t, isRTL, language };
+  }, [language]);
 };

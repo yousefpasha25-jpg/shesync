@@ -13,7 +13,17 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [language, setLanguage] = useState<Language>('en');
+  const [language, setLanguage] = useState<Language>(() => {
+    if (typeof window !== 'undefined') {
+      const stored = localStorage.getItem('shesync-language');
+      if (stored === 'en' || stored === 'ar') return stored;
+    }
+    return 'en';
+  });
+
+  useEffect(() => {
+    localStorage.setItem('shesync-language', language);
+  }, [language]);
 
   const toggleLanguage = () => {
     setLanguage((prev) => (prev === 'en' ? 'ar' : 'en'));

@@ -20,16 +20,22 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "Awdan Vibes — Premium Fitness & Wellness",
-  description: "A premium fitness platform that adapts to your body and lifestyle. Personalized workouts, AI coaching, and holistic wellness — built for you.",
+  title: "SheSync by Awdan Vibes — AI Fitness for Women",
+  description: "The AI-powered wellness platform built exclusively for women. Hormonal cycle syncing, personalized workouts, MENA-culturally aware nutrition, and an empathetic AI coach.",
+  keywords: ["women fitness", "cycle syncing", "AI coach", "femtech", "personalized workouts", "MENA nutrition"],
+  openGraph: {
+    title: "SheSync by Awdan Vibes",
+    description: "Elite AI coaching tailored to your hormonal cycle. Personalized workouts + nutrition — built for women.",
+    type: "website",
+  },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#84c663",
+  themeColor: "#D4607A",
   width: "device-width",
   initialScale: 1,
-  maximumScale: 1,
-  userScalable: false,
+  maximumScale: 5,
+  userScalable: true,
 };
 
 export default function RootLayout({
@@ -43,7 +49,7 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
       </head>
       <body className={`${inter.variable} ${outfit.variable} font-sans antialiased bg-background text-foreground min-h-screen pb-24`}>
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
           <LanguageProvider>
             <TopNav />
             <main className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6 w-full">

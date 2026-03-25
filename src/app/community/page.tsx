@@ -21,16 +21,20 @@ interface ChatMessage {
   created_at: string;
 }
 
+const FALLBACK_LEADERBOARD: LeaderboardItem[] = [
+  { user_id: "1", full_name: "Amira", points: 2840, streak: 12 },
+  { user_id: "2", full_name: "Laila", points: 2100, streak: 8 },
+  { user_id: "3", full_name: "Sara", points: 1950, streak: 5 },
+  { user_id: "4", full_name: "Fatima", points: 1820, streak: 7 },
+];
+
 export default function CommunityPage() {
-  const [leaderboard, setLeaderboard] = useState<LeaderboardItem[]>([
-    { user_id: "1", full_name: "Amira", points: 2840, streak: 12 },
-    { user_id: "2", full_name: "Laila", points: 2100, streak: 8 },
-    { user_id: "3", full_name: "Sara", points: 1950, streak: 5 },
-    { user_id: "4", full_name: "Fatima", points: 1820, streak: 7 },
-  ]);
+  const [leaderboard, setLeaderboard] = useState<LeaderboardItem[]>(FALLBACK_LEADERBOARD);
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [input, setInput] = useState("");
-  const [user, setUser] = useState<any>(null);
+  const [isSending, setIsSending] = useState(false);
+  const [isLoadingMessages, setIsLoadingMessages] = useState(true);
+  const [user, setUser] = useState<{ id: string } | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -78,30 +82,45 @@ export default function CommunityPage() {
 
   const fetchUser = async () => {
     const { data: { user } } = await supabase.auth.getUser();
-    setUser(user);
+    if (user) setUser({ id: user.id });
   };
 
   const fetchMessages = async () => {
-    const { data } = await supabase
-      .from("community_chat")
-      .select("*, profiles(full_name)")
-      .order("created_at", { ascending: true })
-      .limit(50);
-    
-    if (data) {
-      setMessages(data.map((m: any) => ({
-        ...m,
-        full_name: m.profiles?.full_name || "Community Member"
-      })));
+    setIsLoadingMessages(true);
+    try {
+      const { data } = await supabase
+        .from("community_chat")
+        .select("*, profiles(full_name)")
+        .order("created_at", { ascending: true })
+        .limit(50);
+
+      if (data) {
+        setMessages(data.map((m: { id: string; user_id: string; message: string; created_at: string; profiles?: { full_name?: string } }) => ({
+          id: m.id,
+          user_id: m.user_id,
+          message: m.message,
+          created_at: m.created_at,
+          full_name: m.profiles?.full_name || "Community Member",
+        })));
+      }
+    } catch (err) {
+      console.error("Failed to fetch messages:", err);
+    } finally {
+      setIsLoadingMessages(false);
     }
   };
 
   const sendMessage = async () => {
-    if (!input.trim() || !user) return;
+    if (!input.trim() || !user || isSending) return;
+    setIsSending(true);
     try {
       await postCommunityChatAction(input);
       setInput("");
-    } catch(err) { console.error(err); }
+    } catch(err) {
+      console.error(err);
+    } finally {
+      setIsSending(false);
+    }
   };
 
   return (
@@ -167,14 +186,29 @@ export default function CommunityPage() {
           <p className="text-[9px] text-slate-500 uppercase font-bold tracking-widest">24 Active Syncing</p>
         </header>
 
-        <main 
+        <main
           ref={scrollRef}
           className="flex-1 overflow-y-auto px-6 space-y-6 no-scrollbar pb-6"
         >
-          {messages.length === 0 ? (
-            <div className="h-full flex flex-col items-center justify-center text-center space-y-4 opacity-30">
-              <span className="material-symbols-outlined text-4xl">forum</span>
-              <p className="text-[10px] uppercase tracking-widest">Initiate the first pulse...</p>
+          {isLoadingMessages ? (
+            <div className="space-y-4 pt-4">
+              {[1, 2, 3].map((i) => (
+                <div key={i} className="flex gap-3 animate-pulse">
+                  <div className="size-8 rounded-full bg-white/10 shrink-0" />
+                  <div className="flex-1 space-y-2">
+                    <div className="h-2 w-16 bg-white/10 rounded" />
+                    <div className="h-8 bg-white/5 rounded-2xl" />
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : messages.length === 0 ? (
+            <div className="h-full flex flex-col items-center justify-center text-center space-y-4 py-16">
+              <span className="material-symbols-outlined text-5xl text-primary/40">forum</span>
+              <div className="space-y-1">
+                <p className="text-sm font-medium text-slate-400">No messages yet</p>
+                <p className="text-[10px] uppercase tracking-widest text-slate-600">Be the first to inspire the collective</p>
+              </div>
             </div>
           ) : (
             messages.map((msg, i) => (
@@ -213,11 +247,13 @@ export default function CommunityPage() {
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && sendMessage()}
             />
-            <button 
+            <button
               onClick={sendMessage}
-              className="bg-primary text-white size-10 rounded-lg flex items-center justify-center active:scale-95 transition-all"
+              disabled={isSending || !input.trim()}
+              aria-label="Send message"
+              className="bg-primary text-white size-10 rounded-lg flex items-center justify-center active:scale-95 transition-all disabled:opacity-40 disabled:cursor-not-allowed"
             >
-              <span className="material-symbols-outlined text-[18px]">send</span>
+              <span className="material-symbols-outlined text-[18px]">{isSending ? "hourglass_empty" : "send"}</span>
             </button>
           </div>
         </div>

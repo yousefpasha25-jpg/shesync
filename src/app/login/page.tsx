@@ -30,7 +30,7 @@ export default function LoginPage() {
           title: "Welcome back",
           description: "Login successful. Synchronizing your bio-data...",
         });
-        router.push("/");
+        router.push("/dashboard");
       } else {
         const { error } = await supabase.auth.signUp({
           email,
@@ -61,7 +61,7 @@ export default function LoginPage() {
     <div className="relative min-h-screen w-full flex items-center justify-center p-6 overflow-hidden bg-[#050505]">
       {/* Background Aesthetic */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#064e3b]/20 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent"></div>
         <Image 
           src="https://images.unsplash.com/photo-1541534741688-6078c64b5903?q=80&w=2670&auto=format&fit=crop" 
           alt="Fitness" 
@@ -87,24 +87,29 @@ export default function LoginPage() {
 
           <form onSubmit={handleAuth} className="space-y-5">
             <div className="space-y-2">
-              <label className="text-[10px] font-bold uppercase tracking-widest text-slate-500 ml-1">Email Address</label>
-              <input 
+              <label htmlFor="email" className="text-[10px] font-bold uppercase tracking-widest text-slate-500 ml-1">Email Address</label>
+              <input
+                id="email"
                 required
-                type="email" 
+                type="email"
+                autoComplete="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full bg-[#121212] border border-white/10 rounded-md py-4 px-5 text-white text-sm focus:border-primary/50 focus:ring-0 transition-all placeholder:text-slate-600"
-                placeholder="sara@awdin.com"
+                className="w-full bg-[#121212] border border-white/10 rounded-md py-4 px-5 text-white text-sm focus:border-primary/50 focus:outline-none transition-all placeholder:text-slate-600"
+                placeholder="sara@shesync.com"
               />
             </div>
             <div className="space-y-2">
-              <label className="text-[10px] font-bold uppercase tracking-widest text-slate-500 ml-1">Password</label>
-              <input 
+              <label htmlFor="password" className="text-[10px] font-bold uppercase tracking-widest text-slate-500 ml-1">Password</label>
+              <input
+                id="password"
                 required
-                type="password" 
+                type="password"
+                autoComplete={isLogin ? "current-password" : "new-password"}
+                minLength={8}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full bg-[#121212] border border-white/10 rounded-md py-4 px-5 text-white text-sm focus:border-primary/50 focus:ring-0 transition-all placeholder:text-slate-600"
+                className="w-full bg-[#121212] border border-white/10 rounded-md py-4 px-5 text-white text-sm focus:border-primary/50 focus:outline-none transition-all placeholder:text-slate-600"
                 placeholder="••••••••"
               />
             </div>

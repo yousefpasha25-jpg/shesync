@@ -75,7 +75,10 @@ export default function ProfilePage() {
 
       {/* Account Actions */}
       <section className="space-y-4 pt-4">
-         <button className="w-full bg-card-dark border border-white/5 p-4 rounded-xl flex items-center gap-4 group hover:border-white/10 transition-all">
+         <button
+          onClick={() => router.push("/settings/devices")}
+          className="w-full bg-card-dark border border-white/5 p-4 rounded-xl flex items-center gap-4 group hover:border-white/10 transition-all"
+        >
           <span className="material-symbols-outlined text-slate-400 group-hover:text-white transition-colors">settings</span>
           <span className="text-sm font-medium text-slate-200">Account Settings</span>
         </button>

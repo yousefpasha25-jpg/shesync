@@ -10,7 +10,8 @@ interface UserState {
   addXp: (amount: number) => void;
 }
 
-export const useUserStore = create<UserState>()(
+/** @deprecated Use src/stores/useUserStore.ts for auth/onboarding state. This store is for gamification only. */
+export const useGamificationStore = create<UserState>()(
   persist(
     (set) => ({
       xp: 0,
