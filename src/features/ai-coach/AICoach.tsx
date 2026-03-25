@@ -44,7 +44,7 @@ export default function AICoach() {
 
       // Fetch all user data
       const [profile, goals, fitnessPrefs, nutritionPrefs, equipmentAccess] = await Promise.all([
-        supabase.from("profiles").select("name, age, weight_kg, height_cm").eq("id", user.id).maybeSingle(),
+        supabase.from("profiles").select("full_name, age, weight_kg, height_cm").eq("user_id", user.id).maybeSingle(),
         supabase.from("user_goals").select("goal").eq("user_id", user.id),
         supabase.from("fitness_prefs").select("level, frequency_days_per_week").eq("user_id", user.id).maybeSingle(),
         supabase.from("nutrition_prefs").select("meal_frequency, diet_rules").eq("user_id", user.id).maybeSingle(),
@@ -73,16 +73,14 @@ export default function AICoach() {
     setInput("");
 
     try {
-      const CHAT_URL = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/functions/v1/chat`;
-      
-      const response = await fetch(CHAT_URL, {
+      const response = await fetch("/api/coach", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY}`,
         },
         body: JSON.stringify({
           messages: newMessages.map(m => ({ role: m.role, content: m.content })),
+          userProfile: userData,
         }),
       });
 
@@ -193,7 +191,7 @@ export default function AICoach() {
                   <div className="space-y-2">
                     <div className="flex items-center justify-between text-sm">
                       <span className="text-muted-foreground">الاسم:</span>
-                      <span className="font-medium">{userData.profile.name}</span>
+                      <span className="font-medium">{userData.profile.full_name}</span>
                     </div>
                     {userData.profile.age && (
                       <div className="flex items-center justify-between text-sm">
@@ -310,7 +308,7 @@ export default function AICoach() {
                   <div className="flex flex-col items-center justify-center h-full text-center space-y-4">
                     <Sparkles className="h-12 w-12 text-primary/50" />
                     <div>
-                      <h3 className="text-lg font-semibold mb-2">مرحباً {userData?.profile?.name}! 👋</h3>
+                      <h3 className="text-lg font-semibold mb-2">مرحباً {userData?.profile?.full_name}! 👋</h3>
                       <p className="text-muted-foreground">
                         أنا مساعدك الشخصي في اللياقة والتغذية
                         <br />

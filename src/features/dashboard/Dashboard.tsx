@@ -52,22 +52,29 @@ export default function Dashboard() {
 
         setUser(authUser);
 
-        // Fetch dashboard data via optimized RPC to eliminate N+1
-        try {
-          const { data: rpcData, error: rpcError } = await supabase.rpc("get_dashboard_data", { p_user_id: authUser.id });
-          if (rpcError) throw rpcError;
+        // Fetch dashboard data — try RPC first, fall back to direct queries
+        const { data: rpcData, error: rpcError } = await supabase.rpc("get_dashboard_data", { p_user_id: authUser.id });
 
-          if (!rpcData?.profile) {
-            console.warn("AuthGuard: Missing Master Profile! Redirecting to onboarding.");
+        if (!rpcError && rpcData) {
+          if (!rpcData.profile) {
+            // No profile means onboarding is genuinely incomplete
             router.push("/onboarding");
             return;
           }
-
           setProfile(rpcData.profile);
           setUserGoals(rpcData.active_goals ? rpcData.active_goals.map((g: any) => g.goal) : []);
           setWorkoutsThisWeek(rpcData.recent_workouts ? rpcData.recent_workouts.filter((log: any) => log.completed).length : 0);
-        } catch(e) {
-          console.warn("Dashboard: RPC fetch failed", e);
+        } else {
+          // RPC failed (function may not exist yet) — fall back to direct profile query
+          console.warn("Dashboard: RPC unavailable, falling back to direct query:", rpcError?.message);
+          const { data: profileData } = await supabase
+            .from("profiles")
+            .select("full_name, age, fitness_goals")
+            .eq("user_id", authUser.id)
+            .maybeSingle();
+          if (profileData) {
+            setProfile(profileData);
+          }
         }
 
         // Fetch today's water intake

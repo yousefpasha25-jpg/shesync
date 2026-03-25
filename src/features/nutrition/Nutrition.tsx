@@ -102,7 +102,7 @@ export default function Nutrition() {
     setIsGeneratingPlan(true);
 
     try {
-      const { data: profile } = await supabase.from('profiles').select('id, full_name, age, fitness_level, fitness_goals, equipment_access').eq('id', user.id).maybeSingle();
+      const { data: profile } = await supabase.from('profiles').select('user_id, full_name, age, fitness_level, fitness_goals, equipment_access').eq('user_id', user.id).maybeSingle();
       
       const response = await fetch('/api/coach', {
         method: 'POST',
@@ -236,10 +236,13 @@ export default function Nutrition() {
           } else if (payload.eventType === 'DELETE') {
             setWeeklyPlans(prev => prev.filter(p => p.id !== (payload.old as any).id));
           }
-          toast({
-            title: "تم التحديث",
-            description: "تم تحديث الخطة الغذائية بنجاح",
-          });
+          // Only notify on INSERT (new plan generated), not on every sync event
+          if (payload.eventType === 'INSERT') {
+            toast({
+              title: "تم التحديث",
+              description: "تم تحديث الخطة الغذائية بنجاح",
+            });
+          }
         }
       )
       .subscribe();
