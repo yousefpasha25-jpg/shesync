@@ -157,25 +157,6 @@ export default function AICoach() {
 
   return (
     <div className="min-h-screen bg-background">
-      <header className="border-b border-border/40 bg-card/50 backdrop-blur-sm sticky top-0 z-10">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <Button variant="ghost" size="sm" onClick={() => router.push("/app/dashboard")}>
-            <ArrowLeft className="h-4 w-4 mr-2" />
-            Back
-          </Button>
-          <div className="flex-1 text-center">
-            <h1 className="text-xl font-bold flex items-center justify-center gap-2">
-              <Sparkles className="h-5 w-5 text-primary" />
-              SheSync Coach
-            </h1>
-            <p className="text-xs text-muted-foreground">مساعدك الشخصي في اللياقة والتغذية</p>
-          </div>
-          <Button variant="ghost" size="icon" onClick={toggleTheme}>
-            {theme === "light" ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
-          </Button>
-        </div>
-      </header>
-
       <main className="container mx-auto px-4 py-6 max-w-6xl">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* User Info Sidebar */}
